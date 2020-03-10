@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Soma" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6f6f0194-c411-4a95-8fc8-d416a8609e98">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo" forecolor="#0033CC" backcolor="#0033CC" fontName="Arial" fontSize="18" isBold="true" isUnderline="true"/>
+	<style name="subtitulo" forecolor="#000000" fontName="Arial" fontSize="13" isBold="true"/>
+	<queryString>
+		<![CDATA[SELECT
+     TB_PRODUTOS."PK_ID_PRODUTO" AS TB_PRODUTOS_PK_ID_PRODUTO,
+     TB_PRODUTOS."PRO_NOME" AS TB_PRODUTOS_PRO_NOME,
+     TB_PRODUTOS."PRO_VALOR" AS TB_PRODUTOS_PRO_VALOR,
+     TB_PRODUTOS."PRO_ESTOQUE" AS TB_PRODUTOS_PRO_ESTOQUE
+FROM
+     "TB_PRODUTOS" TB_PRODUTOS]]>
+	</queryString>
+	<field name="TB_PRODUTOS_PK_ID_PRODUTO" class="java.lang.Integer"/>
+	<field name="TB_PRODUTOS_PRO_NOME" class="java.lang.String"/>
+	<field name="TB_PRODUTOS_PRO_VALOR" class="java.lang.Double"/>
+	<field name="TB_PRODUTOS_PRO_ESTOQUE" class="java.lang.Double"/>
+	<variable name="SOMA" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{TB_PRODUTOS_PRO_VALOR}]]></variableExpression>
+	</variable>
+	<variable name="Soma2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{TB_PRODUTOS_PRO_ESTOQUE}*$F{TB_PRODUTOS_PRO_VALOR}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement style="Titulo" x="151" y="27" width="239" height="25" uuid="5f69c4b6-a2ea-40d9-ab46-e665124640ed"/>
+				<text><![CDATA[Teste com a variável soma]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement style="subtitulo" x="0" y="41" width="100" height="20" uuid="d890a328-67c4-412f-ae4e-c64906cb37ce"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subtitulo" x="100" y="41" width="100" height="20" uuid="202fec44-28a9-4143-963a-1f64cea52aad"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subtitulo" x="200" y="41" width="100" height="20" uuid="968872e7-5a6c-4e7e-85a3-919a2c2ab1e1"/>
+				<text><![CDATA[Estoque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subtitulo" x="300" y="41" width="100" height="20" uuid="bca6ecec-1e9a-43de-a310-072db6550579"/>
+				<text><![CDATA[V. Unitário]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="381fa722-564e-4e8f-8744-a5b343d2ec6a"/>
+				<textFieldExpression><![CDATA[$F{TB_PRODUTOS_PK_ID_PRODUTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="e6ad6381-bbce-464a-b7c0-71438dbfb1b9"/>
+				<textFieldExpression><![CDATA[$F{TB_PRODUTOS_PRO_NOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="5303dc5a-e25a-469e-8155-656c9e54cc1c"/>
+				<textFieldExpression><![CDATA[$F{TB_PRODUTOS_PRO_ESTOQUE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="6f900fe7-60dd-4c65-8455-2dd99ba6b581"/>
+				<textFieldExpression><![CDATA[$F{TB_PRODUTOS_PRO_VALOR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="201" y="21" width="100" height="20" uuid="2965f115-e9d2-4447-bf8c-d8d8bd354ba6"/>
+				<textFieldExpression><![CDATA[$V{SOMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="21" width="100" height="20" uuid="9490513e-81b4-4e46-9083-96044b022039"/>
+				<textFieldExpression><![CDATA[$V{Soma2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="subtitulo" x="190" y="1" width="111" height="20" uuid="feb561c0-70f2-4dd4-a6de-f5a58ca1d444"/>
+				<text><![CDATA[Soma V. Unitário]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="subtitulo" x="301" y="1" width="190" height="20" uuid="ce67e2e4-2fb5-4770-bf68-5088821099bd"/>
+				<text><![CDATA[Soma V. Unit. todos * Est. Tot.]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="14" splitType="Stretch"/>
+	</summary>
+</jasperReport>

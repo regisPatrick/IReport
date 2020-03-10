@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="410a389e-607f-4c43-b9a2-a6cc21b84e97">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     TB_CLIENTE."PK_ID_CLIENTE" AS TB_CLIENTE_PK_ID_CLIENTE,
+     TB_CLIENTE."CLI_NOME" AS TB_CLIENTE_CLI_NOME,
+     TB_CLIENTE."CLI_ENDERECO" AS TB_CLIENTE_CLI_ENDERECO,
+     TB_CLIENTE."CLI_BAIRRO" AS TB_CLIENTE_CLI_BAIRRO,
+     TB_CLIENTE."CLI_CIDADE" AS TB_CLIENTE_CLI_CIDADE,
+     TB_CLIENTE."CLI_UF" AS TB_CLIENTE_CLI_UF,
+     TB_CLIENTE."CLI_CEP" AS TB_CLIENTE_CLI_CEP,
+     TB_CLIENTE."CLI_TELEFONE" AS TB_CLIENTE_CLI_TELEFONE
+FROM
+     "TB_CLIENTE" TB_CLIENTE]]>
+	</queryString>
+	<field name="TB_CLIENTE_PK_ID_CLIENTE" class="java.lang.Integer"/>
+	<field name="TB_CLIENTE_CLI_NOME" class="java.lang.String"/>
+	<field name="TB_CLIENTE_CLI_ENDERECO" class="java.lang.String"/>
+	<field name="TB_CLIENTE_CLI_BAIRRO" class="java.lang.String"/>
+	<field name="TB_CLIENTE_CLI_CIDADE" class="java.lang.String"/>
+	<field name="TB_CLIENTE_CLI_UF" class="java.lang.String"/>
+	<field name="TB_CLIENTE_CLI_CEP" class="java.lang.String"/>
+	<field name="TB_CLIENTE_CLI_TELEFONE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="08798ee7-d301-4471-97ed-29c453d076d4"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="41" width="100" height="20" uuid="323d4889-eb3a-42f4-9f0a-48d3f52a33af"/>
+				<text><![CDATA[Cidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="fb38623c-442b-48e2-8fae-72b20cc4c292"/>
+				<textFieldExpression><![CDATA[$F{TB_CLIENTE_CLI_NOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="0" width="100" height="20" uuid="7014f8a4-f954-422f-aae0-66b9206d1ea2"/>
+				<textFieldExpression><![CDATA[$F{TB_CLIENTE_CLI_CIDADE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="34" width="100" height="20" uuid="e97f71bf-5935-4898-aa21-851c11faef37"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
